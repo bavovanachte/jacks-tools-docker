@@ -1,11 +1,14 @@
 dist: trusty
-
 jobs:
   include:
-    - stage: build docker image
-      script:
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t mousehunt-jacksdb .
-      - docker images
-      - docker tag mousehunt-jacksdb $DOCKER_USERNAME/mousehunt-jacksdb
-      - docker push $DOCKER_USERNAME/mousehunt-jacksdb
+  - stage: build docker image
+    script:
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    - docker build -t mousehunt-jacksdb .
+    - docker images
+    - docker tag mousehunt-jacksdb $DOCKER_USERNAME/mousehunt-jacksdb
+    - docker push $DOCKER_USERNAME/mousehunt-jacksdb
+env:
+  matrix:
+  - secure: WWgm0cswPynpfWCL7Tipzl1lULO7teZwwg6EFPjz++hq3GBG/asTinKo3vp4SRpSyvZWe/NOEDf3lEox0At/VSal0iF9fLG2WcoEUKk2JSCrXtUbVq1H40NkL0NxBChQZupGUK4vGX5bZJLBSAL85OkADwPJS4XEMooq6wqku3VXUatCU3HkNDldCqKUk/+w6NUwU744BwN4OiMtbqWrnjX4oHPPqEcwKEGmn8ZUOc5JRKV59Yr44VVorrSkxzlmApgSVTorqv3anweQYvNR7BIIkMEVj2ib8vZSuKpAbKcE60au1SJiA6Mv8SjO3WX9vDCjc21NjxzXmkcU8ZeoOEYpV7ROP1RcOXAFW5tgZLRbzimoGhxQqDUtJR5Q6R4LZ7XyhS5Dmv/Difx5COLLTI1+W7yr80cOtfk9rtKpWCboTIjNBaeg51fNLblbzl8cI1Rob2Vylk8FmVxlE0u4ZaARfRUu1nwbBwJATIwq6IMf7AgZ9uRvauPMVf95pFHc42og2MmHcGR15GydRGz0bTZkwq2R9UCYmsEzviX1DaSnxZpFJjeURp6C6x1CZIIrQg7MYquJdIiVM3eXgiabAjVAEMQxsAT3Y58We50dRhVJTuo7G1CYdh896nI1rIK+mNWZPYLoWRgv0mMG94PXEMQJhwkNnZ0a6BWnTDdNA+k=
+  - secure: qUGFF5zneVRos17h4j5ZvJRr1Bl0CqcMZZzeYC/ofKRpGMcsmty4Y64vaImhajqqINdHl3SNFN76l0/yg2NPHi8kV5wmEK4ihl+MPQK6hakWqv2EmkhBCcf7p6PCoLHD4J9iitdQjFN0diH1MKi9FOtxAmOyRwX8XR3uSs6r3/VrKE/Spg8YP4u1xMAhR0W1yQhKk4yukUrGcDHly791IiGqLWDJ+BGVl7zF1pR4UOKyZUCLX1jOCqIujtYchaZf10J6MWbh5L6zNieEUPG7kHvcUxtvHG7HafTXKeEaO7E4mWkhadgt9ZjoGGaUyVxtPlxoqpErrNMapiHCVbqb36Es9m0tkviZgKiKPo9gnxot6anBoevlDMSg+9Q+G3pc9vEwjhFiz8ZgKuuT119aNrYuR+XPQG0QAY+B+uHPGSK3Jalvo2gvHKtoso2NHKeLEvMpaEbOfiFojQBhuPzKxwBxzK+CTTIgkwZJGoNvHhBff6Psk4SpvigKqR4WRn+YWufR804Rcj+8d1PuUJI4RsYGrushCqUsiK+vGzzUbe0eTQ2YHDeOFSX0seRq7jVbK37pHI/FT67KpbaBtCBvPIYkR4gXKnDKa6O8L9qU+yAZqkZBKdTYtl+RB3bhHT58AMLu77z50Y3JaQXfj5GdUexUmbhYKsVfyfL+pPqVpao=
