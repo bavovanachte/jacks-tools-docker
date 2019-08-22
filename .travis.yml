@@ -8,7 +8,7 @@ env:
 script:
 - echo $DOCKER_USERNAME
 - echo $DOCKER_PASSWORD
-- docker build -t mousehunt-jacksdb .
+- travis_wait 60 docker build -t mousehunt-jacksdb .
 - docker images
 - docker tag mousehunt-jacksdb $DOCKER_USERNAME/mousehunt-jacksdb
 deploy:
