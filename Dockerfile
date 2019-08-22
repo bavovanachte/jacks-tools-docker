@@ -10,7 +10,8 @@ ENV MYSQL_PASSWORD=admin
 ENV MYSQL_DATABASE=mhhunthelper
 
 # COPY db_file/hunthelper_nightly.sql.gz /docker-entrypoint-initdb.d/
-COPY db_file/hunthelper_nightly.sql.gz /docker-entrypoint-initdb.d/
+RUN wget https://devjacksmith.keybase.pub/mh_backups/nightly/hunthelper_nightly.sql.gz?dl=1  -P /docker-entrypoint-initdb.d/
+# COPY db_file/hunthelper_nightly.sql.gz /docker-entrypoint-initdb.d/
 
 # Need to change the datadir to something else that /var/lib/mysql because the parent docker file defines it as a volume.
 # https://docs.docker.com/engine/reference/builder/#volume :
