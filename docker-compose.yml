@@ -1,7 +1,7 @@
 version: '2'
 services:
   mysql:
-    image: prepopulated-jackdb
+    image: bavovanachte/mousehunt-jacksdb
     ports:
       - "3306:3306"
     environment:

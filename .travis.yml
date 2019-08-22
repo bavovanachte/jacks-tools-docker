@@ -8,7 +8,12 @@ env:
 script:
 - echo $DOCKER_USERNAME
 - echo $DOCKER_PASSWORD
-- travis_wait 60 docker build -t mousehunt-jacksdb .
+# Output something every 10 minutes or Travis kills the job-
+- while sleep 9m; do echo "=====[ $SECONDS seconds still running ]====="; done &
+# long-living-command
+- docker build -t mousehunt-jacksdb .
+# Killing background sleep loop
+- kill %1
 - docker images
 - docker tag mousehunt-jacksdb $DOCKER_USERNAME/mousehunt-jacksdb
 deploy:
