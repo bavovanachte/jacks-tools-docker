@@ -1,0 +1,11 @@
+dist: trusty
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t mousehunt-jacksdb .
+      - docker images
+      - docker tag mousehunt-jacksdb $DOCKER_USERNAME/mousehunt-jacksdb
+      - docker push $DOCKER_USERNAME/mousehunt-jacksdb
