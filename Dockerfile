@@ -11,7 +11,7 @@ ENV MYSQL_DATABASE=mhhunthelper
 
 # COPY db_file/hunthelper_nightly.sql.gz /docker-entrypoint-initdb.d/
 RUN apt-get update && apt-get install -y wget
-RUN wget https://devjacksmith.keybase.pub/mh_backups/nightly/hunthelper_nightly.sql.gz?dl=1 -o /docker-entrypoint-initdb.d/hunthelper_nightly.sql.gz
+RUN wget https://devjacksmith.keybase.pub/mh_backups/nightly/hunthelper_nightly.sql.gz?dl=1 -O /docker-entrypoint-initdb.d/hunthelper_nightly.sql.gz
 
 # COPY db_file/hunthelper_nightly.sql.gz /docker-entrypoint-initdb.d/
 
