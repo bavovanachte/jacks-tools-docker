@@ -1,0 +1,17 @@
+version: '2'
+services:
+  mysql:
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: jacksdb
+    volumes:
+      - ./db_file:/docker-entrypoint-initdb.d
+    dns:
+      - 10.32.48.250
+      - 10.32.49.250
+
