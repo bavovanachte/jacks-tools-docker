@@ -20,5 +20,5 @@ deploy:
   provider: script
   script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && docker push $DOCKER_USERNAME/mousehunt-jacksdb:full
   on:
-    branch: master
+    branch: full_database
 
