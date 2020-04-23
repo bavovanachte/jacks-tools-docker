@@ -15,10 +15,10 @@ script:
 # Killing background sleep loop
 - kill %1
 - docker images
-- docker tag mousehunt-jacksdb $DOCKER_USERNAME/mousehunt-jacksdb
+- docker tag mousehunt-jacksdb $DOCKER_USERNAME/mousehunt-jacksdb:full
 deploy:
   provider: script
-  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && docker push $DOCKER_USERNAME/mousehunt-jacksdb
+  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && docker push $DOCKER_USERNAME/mousehunt-jacksdb:full
   on:
     branch: master
 

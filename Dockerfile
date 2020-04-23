@@ -10,8 +10,10 @@ ENV MYSQL_PASSWORD=admin
 ENV MYSQL_DATABASE=mhhunthelper
 
 # COPY db_file/hunthelper_nightly.sql.gz /docker-entrypoint-initdb.d/
-RUN apt-get update && apt-get install -y wget
-RUN wget https://devjacksmith.keybase.pub/mh_backups/nightly/hunthelper_nightly.sql.gz?dl=1 -O /docker-entrypoint-initdb.d/hunthelper_nightly.sql.gz
+RUN apt-get update && apt-get install -y curl
+RUN curl https://devjacksmith.keybase.pub/mh_backups/nightly/hunthelper_nightly.sql.gz?dl=1 -o /docker-entrypoint-initdb.d/hunthelper_nightly.sql.gz \
+    && curl https://devjacksmith.keybase.pub/mh_backups/weekly/converter_weekly.sql.gz?dl=1 -o /docker-entrypoint-initdb.d/converter_weekly.sql.gz \
+    && curl https://devjacksmith.keybase.pub/mh_backups/weekly/mapspotter_weekly.sql.gz?dl=1 -o /docker-entrypoint-initdb.d/mapspotter_weekly.sql.gz
 
 # COPY db_file/hunthelper_nightly.sql.gz /docker-entrypoint-initdb.d/
 
